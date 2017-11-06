@@ -1,0 +1,25 @@
+{
+    "name": "mikeshiyan/lite-sql-insert",
+    "description": "Lightweight SQL insertion service.",
+    "license": "MIT",
+    "require": {
+        "php": "^7.1",
+        "ext-PDO": "^7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "LiteSqlInsert\\": "src/"
+        }
+    },
+    "keywords": ["lite", "sql", "insert", "php", "pdo", "oop"],
+    "support": {
+        "source": "https://github.com/mikeshiyan/lite-sql-insert",
+        "issues": "https://github.com/mikeshiyan/lite-sql-insert/issues"
+    },
+    "authors": [
+        {
+            "name": "Mike Shiyan",
+            "homepage": "https://github.com/mikeshiyan"
+        }
+    ]
+}
