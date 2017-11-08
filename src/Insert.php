@@ -5,12 +5,12 @@ namespace LiteSqlInsert;
 /**
  * Provides an insert query abstraction.
  */
-class Insert {
+class Insert implements InsertInterface {
 
   /**
    * Connection object.
    *
-   * @var \LiteSqlInsert\Connection
+   * @var \LiteSqlInsert\ConnectionInterface
    */
   protected $connection;
 
@@ -31,14 +31,14 @@ class Insert {
   /**
    * Insert constructor.
    *
-   * @param \LiteSqlInsert\Connection $connection
+   * @param \LiteSqlInsert\ConnectionInterface $connection
    *   Connection object.
    * @param string $table
    *   Table name.
    * @param string[] $fields
    *   Field names.
    */
-  public function __construct(Connection $connection, string $table, array $fields) {
+  public function __construct(ConnectionInterface $connection, string $table, array $fields) {
     $this->connection = $connection;
     $this->fields = $fields;
 
@@ -51,19 +51,9 @@ class Insert {
   }
 
   /**
-   * Executes a prepared statement with given values.
-   *
-   * @param array $values
-   *   Array of values to insert, in format 'field_name' => $value. Missing
-   *   elements are replaced with NULLs.
-   *
-   * @return $this
-   *   The called object.
-   *
-   * @throws \Exception
-   *   If exception is caught while executing a statement.
+   * {@inheritdoc}
    */
-  public function values(array $values): self {
+  public function values(array $values): InsertInterface {
     $values_in_order = [];
 
     foreach ($this->fields as $name) {
@@ -83,12 +73,9 @@ class Insert {
   }
 
   /**
-   * Commits a transaction.
-   *
-   * @return $this
-   *   The called object.
+   * {@inheritdoc}
    */
-  public function commit(): self {
+  public function commit(): InsertInterface {
     $this->connection->commit();
 
     return $this;
