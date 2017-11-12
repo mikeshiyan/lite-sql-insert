@@ -1,5 +1,7 @@
 # Lite SQL Insert
 
+[![Build Status](https://travis-ci.org/mikeshiyan/lite-sql-insert.svg?branch=master)](https://travis-ci.org/mikeshiyan/lite-sql-insert)
+
 Very lightweight PHP service class for SQL INSERT queries abstraction.
 
 Best suited for use as a [Composer](https://getcomposer.org) library.
