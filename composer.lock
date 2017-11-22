@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "320e9288dd4b67068e7303d9f74e0a57",
+    "content-hash": "f6bc202d21da82fca2278d58cffeda9b",
     "packages": [],
     "packages-dev": [
         {
@@ -419,16 +419,16 @@
         },
         {
             "name": "phpunit/dbunit",
-            "version": "3.0.1",
+            "version": "3.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/dbunit.git",
-                "reference": "6b9cec80dca8694243aade33bceb425ccafbbd0d"
+                "reference": "403350339b6aca748ee0067d027d85621992e21f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/dbunit/zipball/6b9cec80dca8694243aade33bceb425ccafbbd0d",
-                "reference": "6b9cec80dca8694243aade33bceb425ccafbbd0d",
+                "url": "https://api.github.com/repos/sebastianbergmann/dbunit/zipball/403350339b6aca748ee0067d027d85621992e21f",
+                "reference": "403350339b6aca748ee0067d027d85621992e21f",
                 "shasum": ""
             },
             "require": {
@@ -436,7 +436,7 @@
                 "ext-simplexml": "*",
                 "php": "^7.0",
                 "phpunit/phpunit": "^6.0",
-                "symfony/yaml": "^3.0"
+                "symfony/yaml": "^3.0 || ^4.0"
             },
             "type": "library",
             "extra": {
@@ -467,7 +467,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-10-19T13:21:48+00:00"
+            "time": "2017-11-18T17:40:34+00:00"
         },
         {
             "name": "phpunit/php-code-coverage",
@@ -1423,7 +1423,7 @@
         },
         {
             "name": "symfony/yaml",
-            "version": "v3.3.11",
+            "version": "v3.3.13",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",

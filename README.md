@@ -15,13 +15,13 @@ Best suited for use as a [Composer](https://getcomposer.org) library.
 
 To add this library to your Composer project:
 ```
-composer require mikeshiyan/lite-sql-insert
+composer require shiyan/lite-sql-insert
 ```
 
 ## Usage
 
 ```
-$connection = new \LiteSqlInsert\Connection($pdo);
+$connection = new \Shiyan\LiteSqlInsert\Connection($pdo);
 $insert = $connection->insert('my_table', ['name', 'value']);
 
 foreach ($my_data as $name => $value) {

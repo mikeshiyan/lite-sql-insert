@@ -1,5 +1,5 @@
 {
-    "name": "mikeshiyan/lite-sql-insert",
+    "name": "shiyan/lite-sql-insert",
     "description": "Lightweight SQL insertion service.",
     "license": "MIT",
     "require": {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "LiteSqlInsert\\": "src/"
+            "Shiyan\\LiteSqlInsert\\": "src/"
         }
     },
     "keywords": ["lite", "sql", "insert", "php", "pdo", "oop"],

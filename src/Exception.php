@@ -1,9 +1,9 @@
 <?php
 
-namespace LiteSqlInsert;
+namespace Shiyan\LiteSqlInsert;
 
 /**
- * Exception thrown in LiteSqlInsert\ classes.
+ * Exception thrown in Shiyan\LiteSqlInsert\ classes.
  */
 class Exception extends \Exception {
 

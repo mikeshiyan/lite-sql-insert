@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteSqlInsert;
+namespace Shiyan\LiteSqlInsert;
 
 /**
  * Provides a service which constructs Insert objects.

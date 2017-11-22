@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteSqlInsert;
+namespace Shiyan\LiteSqlInsert;
 
 /**
  * Interface for Insert classes.

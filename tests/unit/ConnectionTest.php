@@ -1,8 +1,8 @@
 <?php
 
-use LiteSqlInsert\Connection;
-use LiteSqlInsert\Exception;
-use LiteSqlInsert\Insert;
+use Shiyan\LiteSqlInsert\Connection;
+use Shiyan\LiteSqlInsert\Exception;
+use Shiyan\LiteSqlInsert\Insert;
 use PHPUnit\Framework\TestCase;
 
 class ConnectionTest extends TestCase {

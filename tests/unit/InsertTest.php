@@ -1,7 +1,7 @@
 <?php
 
-use LiteSqlInsert\Connection;
-use LiteSqlInsert\Insert;
+use Shiyan\LiteSqlInsert\Connection;
+use Shiyan\LiteSqlInsert\Insert;
 use PHPUnit\Framework\TestCase;
 
 class InsertTest extends TestCase {

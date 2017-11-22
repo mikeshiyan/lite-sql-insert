@@ -1,6 +1,6 @@
 <?php
 
-namespace LiteSqlInsert;
+namespace Shiyan\LiteSqlInsert;
 
 /**
  * Provides an insert query abstraction.
@@ -10,7 +10,7 @@ class Insert implements InsertInterface {
   /**
    * Connection object.
    *
-   * @var \LiteSqlInsert\ConnectionInterface
+   * @var \Shiyan\LiteSqlInsert\ConnectionInterface
    */
   protected $connection;
 
@@ -31,7 +31,7 @@ class Insert implements InsertInterface {
   /**
    * Insert constructor.
    *
-   * @param \LiteSqlInsert\ConnectionInterface $connection
+   * @param \Shiyan\LiteSqlInsert\ConnectionInterface $connection
    *   Connection object.
    * @param string $table
    *   Table name.

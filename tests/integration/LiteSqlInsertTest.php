@@ -1,6 +1,6 @@
 <?php
 
-use LiteSqlInsert\Connection;
+use Shiyan\LiteSqlInsert\Connection;
 use PHPUnit\DbUnit\Database\Connection as DbUnitConnection;
 use PHPUnit\DbUnit\DataSet\IDataSet;
 use PHPUnit\Framework\TestCase;
