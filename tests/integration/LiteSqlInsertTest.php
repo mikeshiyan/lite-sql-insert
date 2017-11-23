@@ -45,11 +45,13 @@ class LiteSqlInsertTest extends TestCase {
     $actual = $this->getConnection()->createDataSet(['vars']);
     $this->assertDataSetsEqual($expected, $actual);
 
+    // Insert some rows and commit.
     $insert = $connection->insert('vars', ['name', 'value']);
     foreach ([2 => 'b', 'c', 'd'] as $value => $name) {
       $insert->values(['name' => $name, 'value' => $value]);
     }
     $insert->commit();
+    unset($insert);
 
     $rows = [
       ['name' => 'a', 'value' => 1],
@@ -58,6 +60,14 @@ class LiteSqlInsertTest extends TestCase {
       ['name' => 'd', 'value' => 4],
     ];
     $expected = $this->createArrayDataSet(['vars' => $rows]);
+    $actual = $this->getConnection()->createDataSet(['vars']);
+    $this->assertDataSetsEqual($expected, $actual);
+
+    // Insert a row and don't commit.
+    $insert = $connection->insert('vars', ['name', 'value']);
+    $insert->values(['name' => 'e', 'value' => 5]);
+    unset($insert);
+
     $actual = $this->getConnection()->createDataSet(['vars']);
     $this->assertDataSetsEqual($expected, $actual);
   }

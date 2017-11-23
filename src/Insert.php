@@ -81,4 +81,15 @@ class Insert implements InsertInterface {
     return $this;
   }
 
+  /**
+   * Insert destructor.
+   */
+  public function __destruct() {
+    try {
+      $this->connection->rollBack();
+    }
+    catch (\Exception $exception) {
+    }
+  }
+
 }
