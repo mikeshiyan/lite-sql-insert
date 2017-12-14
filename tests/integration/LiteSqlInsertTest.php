@@ -1,21 +1,20 @@
 <?php
 
-use Shiyan\LiteSqlInsert\Connection;
+namespace Shiyan\LiteSqlInsert\tests\integration;
+
 use PHPUnit\DbUnit\Database\Connection as DbUnitConnection;
 use PHPUnit\DbUnit\DataSet\IDataSet;
-use PHPUnit\Framework\TestCase;
-use PHPUnit\DbUnit\TestCaseTrait;
+use PHPUnit\DbUnit\TestCase;
+use Shiyan\LiteSqlInsert\Connection;
 
 class LiteSqlInsertTest extends TestCase {
-
-  use TestCaseTrait;
 
   protected static $pdo;
   protected $dbUnitConnection;
 
-  protected function getPdo(): PDO {
+  protected function getPdo(): \PDO {
     if (!isset(self::$pdo)) {
-      self::$pdo = new PDO('sqlite::memory:');
+      self::$pdo = new \PDO('sqlite::memory:');
       self::$pdo->exec('CREATE TABLE vars (name TEXT, value TEXT)');
     }
 

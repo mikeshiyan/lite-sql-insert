@@ -1,8 +1,10 @@
 <?php
 
+namespace Shiyan\LiteSqlInsert\tests\unit;
+
+use PHPUnit\Framework\TestCase;
 use Shiyan\LiteSqlInsert\Connection;
 use Shiyan\LiteSqlInsert\Insert;
-use PHPUnit\Framework\TestCase;
 
 class InsertTest extends TestCase {
 
