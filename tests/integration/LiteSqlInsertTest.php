@@ -9,16 +9,16 @@ use Shiyan\LiteSqlInsert\Connection;
 
 class LiteSqlInsertTest extends TestCase {
 
-  protected static $pdo;
+  protected $pdo;
   protected $dbUnitConnection;
 
   protected function getPdo(): \PDO {
-    if (!isset(self::$pdo)) {
-      self::$pdo = new \PDO('sqlite::memory:');
-      self::$pdo->exec('CREATE TABLE vars (name TEXT, value TEXT)');
+    if (!isset($this->pdo)) {
+      $this->pdo = new \PDO('sqlite::memory:');
+      $this->pdo->exec('CREATE TABLE vars (name TEXT, value TEXT DEFAULT NULL)');
     }
 
-    return self::$pdo;
+    return $this->pdo;
   }
 
   protected function getConnection(): DbUnitConnection {
@@ -67,6 +67,27 @@ class LiteSqlInsertTest extends TestCase {
     $insert->values(['name' => 'e', 'value' => 5]);
     unset($insert);
 
+    $actual = $this->getConnection()->createDataSet(['vars']);
+    $this->assertDataSetsEqual($expected, $actual);
+  }
+
+  public function testInsertNamedMatchTrait(): void {
+    $trait = new ClassUsingInsertNamedMatchTrait($this->getPdo());
+
+    $trait->preRun();
+
+    $this->assertSame(TRUE, $this->getPdo()->inTransaction());
+
+    $trait->onMatch([0 => 'name: a', 'name' => 'a'], '');
+    $trait->onMatch([0 => 'name: b; value: 2', 'name' => 'b', 'value' => '2'], '');
+    $trait->postRun();
+
+    $this->assertSame(FALSE, $this->getPdo()->inTransaction());
+    $rows = [
+      ['name' => 'a', 'value' => NULL],
+      ['name' => 'b', 'value' => 2],
+    ];
+    $expected = $this->createArrayDataSet(['vars' => $rows]);
     $actual = $this->getConnection()->createDataSet(['vars']);
     $this->assertDataSetsEqual($expected, $actual);
   }

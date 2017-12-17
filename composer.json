@@ -19,6 +19,11 @@
             "Shiyan\\LiteSqlInsert\\": "src/"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Shiyan\\LiteSqlInsert\\tests\\": "tests/"
+        }
+    },
     "keywords": ["lite", "sql", "insert", "php", "pdo", "oop"],
     "support": {
         "source": "https://github.com/mikeshiyan/lite-sql-insert",
