@@ -2,6 +2,7 @@
 
 namespace Shiyan\LiteSqlInsert\Iterate\Scenario;
 
+use Shiyan\Iterate\Scenario\ScenarioInterface;
 use Shiyan\LiteSqlInsert\ConnectionInterface;
 
 /**
@@ -23,12 +24,65 @@ trait BaseInsertTrait {
   protected $insert;
 
   /**
+   * A ConnectionInterface instance.
+   *
+   * @var \Shiyan\LiteSqlInsert\ConnectionInterface
+   */
+  protected $connection;
+
+  /**
+   * Table name.
+   *
+   * @var string
+   */
+  protected $table;
+
+  /**
+   * Field names.
+   *
+   * @var string[]
+   */
+  protected $fields;
+
+  /**
+   * Sets ConnectionInterface instance.
+   *
+   * @param \Shiyan\LiteSqlInsert\ConnectionInterface $connection
+   *   An instance of object implementing ConnectionInterface.
+   *
+   * @return $this|\Shiyan\Iterate\Scenario\ScenarioInterface
+   *   The called object.
+   */
+  public function setConnection(ConnectionInterface $connection): ScenarioInterface {
+    $this->connection = $connection;
+
+    return $this;
+  }
+
+  /**
    * Gets a ConnectionInterface instance.
    *
    * @return \Shiyan\LiteSqlInsert\ConnectionInterface
    *   A ConnectionInterface instance.
    */
-  abstract protected function getConnection(): ConnectionInterface;
+  protected function getConnection(): ConnectionInterface {
+    return $this->connection;
+  }
+
+  /**
+   * Sets the table name.
+   *
+   * @param string $table
+   *   The table name to use.
+   *
+   * @return $this|\Shiyan\Iterate\Scenario\ScenarioInterface
+   *   The called object.
+   */
+  public function setTable(string $table): ScenarioInterface {
+    $this->table = $table;
+
+    return $this;
+  }
 
   /**
    * Gets a name of a table to insert into.
@@ -36,7 +90,24 @@ trait BaseInsertTrait {
    * @return string
    *   Table name.
    */
-  abstract protected function getTable(): string;
+  protected function getTable(): string {
+    return $this->table;
+  }
+
+  /**
+   * Sets names of fields to insert into.
+   *
+   * @param string[] $fields
+   *   Field names.
+   *
+   * @return $this|\Shiyan\Iterate\Scenario\ScenarioInterface
+   *   The called object.
+   */
+  public function setFields(array $fields): ScenarioInterface {
+    $this->fields = $fields;
+
+    return $this;
+  }
 
   /**
    * Gets names of fields to insert into.
@@ -44,7 +115,9 @@ trait BaseInsertTrait {
    * @return string[]
    *   Field names.
    */
-  abstract protected function getFields(): array;
+  protected function getFields(): array {
+    return $this->fields;
+  }
 
   /**
    * Prepares a statement and initiates a transaction in the pre-run phase.

@@ -3,29 +3,19 @@
 namespace Shiyan\LiteSqlInsert\tests\integration;
 
 use Shiyan\LiteSqlInsert\Connection;
-use Shiyan\LiteSqlInsert\ConnectionInterface;
 use Shiyan\LiteSqlInsert\Iterate\Scenario\InsertNamedMatchTrait;
 
 class ClassUsingInsertNamedMatchTrait {
 
   use InsertNamedMatchTrait;
 
-  public $connection;
-
   public function __construct(\PDO $pdo) {
     $this->connection = new Connection($pdo);
-  }
-
-  protected function getConnection(): ConnectionInterface {
-    return $this->connection;
+    $this->table = 'vars';
   }
 
   protected function getPattern(): string {
     return '/^name: (?<name>\w+)(; value: (?<value>.*))?$/';
-  }
-
-  protected function getTable(): string {
-    return 'vars';
   }
 
 }

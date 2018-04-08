@@ -30,13 +30,26 @@ trait InsertNamedMatchTrait {
    *
    * @return string[]
    *   Field names.
+   *
+   * @throws \RuntimeException
+   *   If there are no named subpatterns in the pattern or they are not unique.
    */
   protected function getFields(): array {
-    // Search the pattern for named subpatterns and get their names.
-    // @link https://stackoverflow.com/a/47753964/3260408
-    preg_match_all("~(?<!\\\\)(?:\\\\{2})*\(\?(?|P?<([_A-Za-z]\w{0,31})>|'([_A-Za-z]\w{0,31})')~", $this->getPattern(), $matches);
+    if (!$this->fields) {
+      // Search the pattern for named subpatterns and get their names.
+      // @link https://stackoverflow.com/a/47753964/3260408
+      preg_match_all("~(?<!\\\\)(?:\\\\{2})*\(\?(?|P?<([_A-Za-z]\w{0,31})>|'([_A-Za-z]\w{0,31})')~", $this->getPattern(), $matches);
+      $this->fields = $matches[1];
 
-    return $matches[1];
+      if (!$this->fields) {
+        throw new \RuntimeException('Pattern must contain named subpatterns.');
+      }
+      if (count(array_unique($this->fields)) != count($this->fields)) {
+        throw new \RuntimeException('Subpattern names must be unique.');
+      }
+    }
+
+    return $this->fields;
   }
 
   /**

@@ -17,10 +17,19 @@ class InsertNamedMatchTraitTest extends TestCase {
     $get_fields = (new \ReflectionObject($trait))->getMethod('getFields');
     $get_fields->setAccessible(TRUE);
 
-    preg_match($pattern, $subject, $matches);
-    $expected = array_keys(array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY));
+    $result = @preg_match($pattern, $subject, $matches);
 
-    $this->assertSame($expected, $get_fields->invoke($trait));
+    if ($result !== FALSE) {
+      $expected = array_keys(array_filter($matches, 'is_string', ARRAY_FILTER_USE_KEY));
+
+      if (count($expected)) {
+        $this->assertSame($expected, $get_fields->invoke($trait));
+        return;
+      }
+    }
+
+    $this->expectException(\RuntimeException::class);
+    $get_fields->invoke($trait);
   }
 
   public function getFieldsProvider(): array {
@@ -28,6 +37,7 @@ class InsertNamedMatchTraitTest extends TestCase {
       ['/a/'],
       ["/(?'name'\w+)/"],
       ['/(?P<name>\w+)/'],
+      ['/(?P<name>\w+)(?<name>\w+)/'],
       ['/(?<name>\w+)/ims'],
       ['/(?P<Name>.*(?<Value>:).*)/'],
       ['#(?<abc45fgh9_abc45fgh9_abc45fgh9_12>.*)#'],
