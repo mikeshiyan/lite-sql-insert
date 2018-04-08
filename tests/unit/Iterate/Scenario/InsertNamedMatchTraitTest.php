@@ -1,9 +1,9 @@
 <?php
 
-namespace Shiyan\LiteSqlInsert\tests\unit\IteratorRegex\Scenario;
+namespace Shiyan\LiteSqlInsert\tests\unit\Iterate\Scenario;
 
 use PHPUnit\Framework\TestCase;
-use Shiyan\LiteSqlInsert\IteratorRegex\Scenario\InsertNamedMatchTrait;
+use Shiyan\LiteSqlInsert\Iterate\Scenario\InsertNamedMatchTrait;
 
 class InsertNamedMatchTraitTest extends TestCase {
 

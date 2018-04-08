@@ -12,7 +12,7 @@
         "phpunit/dbunit": "^3.0"
     },
     "suggest": {
-        "shiyan/iterator-regex": "Allows inserting regex matches in iteration"
+        "shiyan/iterate": "Allows inserting in iteration"
     },
     "autoload": {
         "psr-4": {

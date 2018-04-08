@@ -4,7 +4,7 @@ namespace Shiyan\LiteSqlInsert\tests\integration;
 
 use Shiyan\LiteSqlInsert\Connection;
 use Shiyan\LiteSqlInsert\ConnectionInterface;
-use Shiyan\LiteSqlInsert\IteratorRegex\Scenario\InsertNamedMatchTrait;
+use Shiyan\LiteSqlInsert\Iterate\Scenario\InsertNamedMatchTrait;
 
 class ClassUsingInsertNamedMatchTrait {
 
