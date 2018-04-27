@@ -92,4 +92,27 @@ class LiteSqlInsertTest extends TestCase {
     $this->assertDataSetsEqual($expected, $actual);
   }
 
+  public function testInsertTrait(): void {
+    $iterator = new \ArrayIterator([
+      ['name' => 'a'],
+      ['name' => 'b', 'value' => 2],
+    ]);
+
+    $trait = new ClassUsingInsertTrait($this->getPdo(), $iterator);
+
+    $trait->preRun();
+    $trait->onEach();
+    $iterator->next();
+    $trait->onEach();
+    $trait->postRun();
+
+    $rows = [
+      ['name' => 'a', 'value' => NULL],
+      ['name' => 'b', 'value' => 2],
+    ];
+    $expected = $this->createArrayDataSet(['vars' => $rows]);
+    $actual = $this->getConnection()->createDataSet(['vars']);
+    $this->assertDataSetsEqual($expected, $actual);
+  }
+
 }
